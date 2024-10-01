@@ -1,0 +1,70 @@
+.hero {
+  height: calc(100vh - 100px);
+  background: linear-gradient(180deg, #0c0c1d, #111132);
+  overflow: hidden;
+  position: relative;
+
+  .wrapper {
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+
+    .text_container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+
+      h2 {
+        color: rebeccapurple;
+        font-size: 30px;
+        letter-spacing: 10px;
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      button {
+        padding: 1rem 1.4rem;
+        border: 1px solid gray;
+        background-color: transparent;
+        color: white;
+        border-radius: 0.5rem;
+      }
+
+      button:first-child {
+        margin-right: 10px;
+      }
+
+      button:nth-child(2) {
+        color: black;
+        background: white;
+      }
+    }
+
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .sliding_text_container {
+      width: 50%;
+      position: absolute;
+      bottom: -50px;
+      font-size: 40vh;
+      white-space: nowrap;
+      color:#ffffff09;
+      font-weight: bold;
+    }
+
+  .image_container {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
