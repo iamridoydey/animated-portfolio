@@ -1,4 +1,5 @@
 .portfolio {
+  max-width: 1200;
   position: relative;
 
   .progress_bar_section {
@@ -14,5 +15,9 @@
       height: 10px;
       background-color: white;
     }
+  }
+
+  .items{
+    padding: 10px 30px;
   }
 }
