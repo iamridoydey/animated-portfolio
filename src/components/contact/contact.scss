@@ -36,6 +36,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      z-index: 9;
 
       input,
       textarea {
@@ -43,6 +44,7 @@
         background-color: transparent;
         border: 1px solid white;
         border-radius: 5px;
+        color: white;
       }
 
       button {
@@ -51,6 +53,7 @@
         color: white;
         background-color: orange;
         border-radius: 5px;
+        cursor: pointer;
       }
     }
   }

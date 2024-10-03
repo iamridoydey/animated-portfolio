@@ -1,10 +1,27 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const ref = useRef();
+  const form = useRef();
   const isView = useInView(ref);
+
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  // Email on submit
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_9jmgu5f", "template_vnufw4u", form.current, {
+        publicKey: "NoTMfk5euf9wp0b91",
+      })
+      .then(() => setSuccess(true))
+      .catch(() => setError(true));
+  };
 
   const variants = {
     initial: {
@@ -53,7 +70,7 @@ const Contact = () => {
         >
           <svg width="450px" height="450px" viewBox="0 0 32.666 32.666">
             <motion.path
-              strokeWidth={.2}
+              strokeWidth={0.2}
               fill="none"
               initial={{ pathLength: 0 }}
               animate={isView && { pathLength: 1 }}
@@ -78,11 +95,15 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4 }}
+          ref={form}
+          onSubmit={sendEmail}
         >
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <textarea rows={8} placeholder="Message"></textarea>
+          <input type="text" placeholder="Name" name="name" required />
+          <input type="email" placeholder="Email" name="email" required />
+          <textarea rows={8} placeholder="Message" name="message"></textarea>
           <button type="submit">Submit</button>
+          {(error && alert("Sommething Went Wrong!")) ||
+            (success && alert("Successfully Sent The Email"))}
         </motion.form>
       </motion.div>
     </motion.div>
